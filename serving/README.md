@@ -4,11 +4,11 @@ This folder contains the code and configuration for serving trained models via a
 
 ## Structure
 
-- [`api.py`](serving/api.py): FastAPI application exposing a `/predict` endpoint for inference.
-- [`utils.py`](serving/utils.py): Utility functions for model loading, preprocessing, inference, and postprocessing.
-- [`transform.py`](serving/transform.py): Custom image transforms (e.g., cropping text blocks).
-- [`requirements.txt`](serving/requirements.txt): Python dependencies for serving.
-- [`model/`](serving/model/): Folder containing exported ONNX models and class encodings.
+- [`api.py`](api.py): FastAPI application exposing a `/predict` endpoint for inference.
+- [`utils.py`](utils.py): Utility functions for model loading, preprocessing, inference, and postprocessing.
+- [`transform.py`](transform.py): Custom image transforms (e.g., cropping text blocks).
+- [`requirements.txt`](requirements.txt): Python dependencies for serving.
+- [`model/`](model/): Folder containing exported ONNX models and class encodings.
   - `smallresnet/model.onnx`: ONNX model file.
   - `smallresnet/class_encoding.json`: Mapping from class indices to class names.
 
