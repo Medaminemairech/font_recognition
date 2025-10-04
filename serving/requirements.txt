@@ -1,0 +1,8 @@
+onnxruntime
+fastapi
+uvicron
+torch
+torchvision
+pillow
+numpy
+easyocr
