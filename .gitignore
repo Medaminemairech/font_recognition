@@ -40,6 +40,8 @@ pip-delete-this-directory.txt
 *.csv
 *.pt
 *.pth
+*.pt
+*.onnx
 
 # Jupyter Notebooks
 *.ipynb
