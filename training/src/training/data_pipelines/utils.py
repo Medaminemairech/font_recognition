@@ -1,5 +1,7 @@
 from PIL import Image
 import numpy as np
+import numpy as np
+from collections import defaultdict
 
 
 def safe_loader(path):
@@ -11,10 +13,6 @@ def safe_loader(path):
         return None
 
 
-import torch
-from torch.utils.data import Subset
-import numpy as np
-from collections import defaultdict
 
 
 def balanced_subset_indices(

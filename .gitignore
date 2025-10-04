@@ -36,6 +36,14 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
+# Data and model files
+*.csv
+*.pt
+*.pth
+
+# Jupyter Notebooks
+*.ipynb
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
