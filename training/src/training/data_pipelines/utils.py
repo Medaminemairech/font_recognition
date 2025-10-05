@@ -1,18 +1,20 @@
-from PIL import Image
-import numpy as np
-import numpy as np
 from collections import defaultdict
+
+import numpy as np
+from PIL import Image
 
 
 def safe_loader(path):
+    """
+    Safely loads an image from the given path.
+    If the image is corrupted, returns None and prints a warning.
+    """
     try:
         with Image.open(path) as img:
             return img.convert("RGB")
     except Exception as e:
         print(f"Skipping corrupted image: {path} ({e})")
         return None
-
-
 
 
 def balanced_subset_indices(

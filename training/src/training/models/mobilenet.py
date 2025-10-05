@@ -5,6 +5,12 @@ from .base import BaseClassifier
 
 
 class MobileNetClassifier(BaseClassifier):
+    """MobileNetV3 classifier model.
+    Args:
+        config: ModelConfig object with model settings.
+    Returns: MobileNetV3 model with modified classifier head.
+    """
+
     def _build_model(self):
 
         weights = (

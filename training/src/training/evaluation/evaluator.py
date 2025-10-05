@@ -1,19 +1,24 @@
 import os
-import pandas as pd
 from pathlib import Path
-from PIL import Image
-from sklearn.metrics import (
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    classification_report,
-    accuracy_score,
-)
+
 import matplotlib.pyplot as plt
+import pandas as pd
+from PIL import Image
+from sklearn.metrics import (ConfusionMatrixDisplay, accuracy_score,
+                             classification_report, confusion_matrix)
 
 from training.config import EvalConfig
 
 
 class Evaluator:
+    """Evaluator for font classification models.
+    Computes confusion matrix and classification report.
+
+    Args:
+        config: EvalConfig object with evaluation settings.
+    Returns: dict with accuracy, classification report, confusion matrix, and missing predictions.
+    """
+
     def __init__(self, config: EvalConfig):
         self.config = config
         self.model_name = config.predictions_csv_path.split("/")[-2]

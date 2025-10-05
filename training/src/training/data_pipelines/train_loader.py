@@ -4,7 +4,7 @@ from torchvision import datasets, transforms
 
 from training.config import DataConfig
 
-from .utils import safe_loader, balanced_subset_indices
+from .utils import balanced_subset_indices, safe_loader
 
 
 class ImageDataModule:
@@ -13,7 +13,7 @@ class ImageDataModule:
         Initializes the data module with configuration parameters.
         Args:
             config (DataConfig): Configuration object containing data parameters.
-
+        returns: None
         """
         self.config = config
         self._prepare_transforms()

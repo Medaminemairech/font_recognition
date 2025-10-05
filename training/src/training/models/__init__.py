@@ -1,5 +1,5 @@
-from .resnet18 import ResNetClassifier
 from .mobilenet import MobileNetClassifier
+from .resnet18 import ResNetClassifier
 from .small_resnet import SmallResNetClassifier
 
 models_dict = {

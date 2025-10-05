@@ -1,1 +1,2 @@
-from .config import DataConfig, ModelConfig, TrainingConfig, TestConfig, EvalConfig
+from .config import (DataConfig, EvalConfig, ModelConfig, TestConfig,
+                     TrainingConfig)

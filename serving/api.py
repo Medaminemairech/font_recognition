@@ -1,7 +1,9 @@
-import os
 import logging
-from fastapi import FastAPI, Query, HTTPException
-from utils import load_model, preprocess_input, run_inference, postprocess_output
+import os
+
+from fastapi import FastAPI, HTTPException, Query
+from utils import (load_model, postprocess_output, preprocess_input,
+                   run_inference)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

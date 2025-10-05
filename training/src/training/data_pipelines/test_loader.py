@@ -1,12 +1,25 @@
 import os
+
 from PIL import Image
+from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
-from torch.utils.data import Dataset, DataLoader
 
 from .transforms import CropTextBlockTransform
 
 
 class TestImageDataset(Dataset):
+    """Custom Dataset for loading test images from a directory.
+    Assumes images are in formats supported by PIL (e.g., .png, .jpg).
+
+    Args:
+        image_dir (str): Directory with all the test images.
+        transform (callable, optional): Optional transform to be applied on an image.
+
+        Returns:
+        image (Tensor): Transformed image tensor.
+        filename (str): Original filename of the image.
+    """
+
     def __init__(self, image_dir, transform=None):
         self.image_dir = image_dir
         self.image_paths = sorted(
@@ -33,6 +46,12 @@ class TestDataLoader:
     """
     Wrapper class to create a DataLoader for the test dataset,
     cropping the text block first.
+    Args:
+        test_dir (str): Directory containing test images.
+        batch_size (int): Number of images per batch.
+        img_size (int): Size to which each image will be resized (img_size x img_size).
+    Returns:
+        DataLoader: PyTorch DataLoader for the test dataset.
     """
 
     def __init__(self, test_dir: str, batch_size: int = 32, img_size: int = 224):

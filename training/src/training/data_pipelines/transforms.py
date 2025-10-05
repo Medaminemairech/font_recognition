@@ -1,11 +1,16 @@
-from PIL import Image
-import numpy as np
 import easyocr
+import numpy as np
+from PIL import Image
 
 
 class CropTextBlockTransform:
     """
     Transform to crop the entire text block from an image using EasyOCR.
+    If no text is detected, returns the original image.
+    Uses PIL for image handling.
+    args:
+        lang_list: list of languages for EasyOCR (default is ["en"])
+    returns: cropped PIL Image
     """
 
     def __init__(self, lang_list=["en"]):

@@ -1,7 +1,9 @@
+import json
 import os
 from pathlib import Path
-import json
+
 import torch
+
 from training.config import ModelConfig
 from training.models import models_dict
 
@@ -12,6 +14,14 @@ def export_to_onnx(
     export_path: str,
     input_size: tuple = (1, 3, 224, 224),
 ):
+    """Exports a trained model to ONNX format.
+    Args:
+        model_name: Name of the model architecture (e.g., 'resnet18', 'mobilenet').
+        checkpoint_path: Path to the trained model checkpoint (.pt file).
+        export_path: Directory where the ONNX model and class encoding will be saved.
+        input_size: Tuple representing the input tensor size (batch_size, channels, height, width).
+    Returns: None
+    """
 
     state_dict = torch.load(checkpoint_path)
     idx_to_class = {v: k for k, v in state_dict["classes_dict"].items()}

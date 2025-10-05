@@ -5,6 +5,12 @@ from .base import BaseClassifier
 
 
 class ResNetClassifier(BaseClassifier):
+    """ResNet18 classifier model.
+    Args:
+        config: ModelConfig object with model settings.
+    Returns: ResNet18 model with modified fully connected layer.
+    """
+
     def _build_model(self):
 
         weights = (

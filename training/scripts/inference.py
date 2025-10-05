@@ -1,5 +1,6 @@
 import argparse
 import logging
+
 from training.config import TestConfig
 from training.inference import TestRunner
 

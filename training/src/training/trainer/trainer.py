@@ -1,15 +1,24 @@
-from dataclasses import dataclass
+import os
+
+import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from tqdm import tqdm
-import os
-import matplotlib.pyplot as plt
 
 from training.config import TrainingConfig
 
 
 class Trainer:
+    """Trainer class to handle training and validation of classification models.
+    Implements training loop, validation, checkpointing, early stopping, and learning rate scheduling.
+    Args:
+        model: An instance of a model class (e.g., ResNetClassifier, MobileNetClassifier).
+        config: TrainingConfig object with training settings.
+        classes_dict: Optional dictionary mapping class indices to class names.
+    Returns: None
+    """
+
     def __init__(self, model, config: TrainingConfig, classes_dict=None):
         if not torch.cuda.is_available():
             config.device = "cpu"

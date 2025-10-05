@@ -1,17 +1,20 @@
 import os
-import torch
-from torch.utils.data import DataLoader
-import pandas as pd
 from pathlib import Path
 
-from training.data_pipelines import TestDataLoader
+import pandas as pd
+import torch
+
 from training.config import ModelConfig, TestConfig
+from training.data_pipelines import TestDataLoader
 from training.models import models_dict
 
 
 class TestRunner:
     """
     Runs inference on a test dataset and saves predictions.
+    Args:
+        config: TestConfig object with test settings.
+    Returns: path to CSV file with predictions.
     """
 
     def __init__(self, config: TestConfig):

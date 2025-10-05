@@ -1,8 +1,9 @@
 import os
 from pathlib import Path
-from tqdm import tqdm
+
 import pandas as pd
 from PIL import Image
+from tqdm import tqdm
 
 
 def generate_metadata(base_dir: str, output_path: str) -> None:

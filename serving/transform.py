@@ -1,6 +1,6 @@
-from PIL import Image
-import numpy as np
 import easyocr
+import numpy as np
+from PIL import Image
 
 
 class CropTextBlockTransform:

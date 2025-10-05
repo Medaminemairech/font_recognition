@@ -1,17 +1,25 @@
 import json
 from typing import Dict, Tuple
-import torch
-from torchvision import transforms
+
 import numpy as np
 import onnxruntime as ort
+import torch
 from PIL import Image
-
+from torchvision import transforms
 from transform import CropTextBlockTransform
 
 crop_transform = CropTextBlockTransform(lang_list=["en"])
 
 
 def load_model(model_path: str):
+    """
+    loads the ONNX model and class encoding from the specified path.
+    Args:
+        model_path: path to the directory containing model.onnx and class_encoding.json
+        Returns:
+        session: ONNX Runtime InferenceSession
+        class_ids: dict mapping class index -> class name
+    """
     session = ort.InferenceSession(f"{model_path}/model.onnx")
     class_ids_str = json.load(open(f"{model_path}/class_encoding.json"))
     class_ids = {int(k): v for k, v in class_ids_str.items()}
@@ -19,7 +27,14 @@ def load_model(model_path: str):
 
 
 def run_inference(session, input_data):
-    # input_data: numpy array of shape (1, C, H, W) and dtype float32
+    """
+    runs inference on the input data using the provided ONNX Runtime session.
+    Args:
+        session: ONNX Runtime InferenceSession
+        input_data: numpy array of shape (1, C, H, W), dtype float32
+    Returns:
+        probs: numpy array of shape (1, num_classes), dtype float32
+    """
     input_name = session.get_inputs()[0].name
     output_name = session.get_outputs()[0].name
 
@@ -29,11 +44,6 @@ def run_inference(session, input_data):
     probs = np.exp(result) / np.sum(np.exp(result), axis=1, keepdims=True)
 
     return probs
-
-
-from PIL import Image
-from torchvision import transforms
-import numpy as np
 
 
 def preprocess_input(image_path, img_size=224):
